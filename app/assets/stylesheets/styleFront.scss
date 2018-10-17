@@ -1,0 +1,72 @@
+@import "partials/variables";
+body{
+    font-family: $font-body;
+}
+
+//navbar
+nav{
+    background-color: $color-nav !important;
+    height: $h-navbar;
+}
+
+//navbar-brand
+.navbar-brand{
+    color: $color-brand !important;
+    font-family: $font-brand;
+    font-size: $font-size-brand;
+    padding-left: 30px;
+    padding-right: 90px;
+}
+
+//navbar-items
+.nav li{
+    width: $w-navbar-item;
+    height: $h-navbar-item;
+    -webkit-transform: matrix(0.9986,-0.1600,0.1523,0.9986,-1,2);
+	-ms-transform: matrix(0.9986,-0.0523,0.0523,0.9986,-1,2);
+	transform: matrix(0.9986,-0.1600,0.1523,0.9986,-1,2);
+    position: relative;
+    margin: 1px;
+}
+.nav li a{
+    font-family: $font-navbar-item;
+    font-size: $font-size-navbar-item;
+    color: black !important;
+    
+    font-weight: bold;
+}
+.navbar-default .navbar-nav > .active > a{
+	background: $color-navbar-item-active!important;
+	text-decoration: none;
+}
+nav ul > li a:hover{
+	background: $color-navbar-item-active!important;
+    text-decoration: none;
+    color: $color-hover!important;
+}
+
+//container
+#container{
+    margin-top: 2em;
+}
+
+
+//footer
+footer{
+    height: $h-footer;
+    background-color: $color-nav !important;
+    text-align: center;
+    color: black !important;
+    font-family: $font-footer;
+    font-size: $font-size-navbar-item;
+    padding-top: 0.5em;
+    position: relative;
+	top: 406px;
+}
+#login{
+    padding-top: 30px;
+    padding-right: 10px;
+}
+#login a{
+    color: black;
+}

@@ -1,0 +1,93 @@
+<div class="oslider">
+<div class="content" style="max-width:800px; height: 200px;">
+  <div class="mySlides">
+    <h2><b>What is Lorem Ipsum?</b></h2>
+    <h4>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 
+        1500s, when an unknown printer took a galley of type and scrambled it to make 
+        a type specimen book. It has survived not only five centuries, but also the 
+        leap into electronic typesetting, remaining essentially unchanged. It was 
+        popularised in the 1960s with the release of Letraset sheets containing 
+        Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.
+    </h4>
+  </div>
+   <%= image_tag  "img/image1.jpg", class:'mySlides', width:'800px', height:'200px' %>
+
+  <%= image_tag  "img/image2.jpg", class:'mySlides', width:'800px', height:'200px' %>
+</div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-xs-3 col-md-4">
+        <div class="panel panel-success">
+            <div class="panel panel-heading">
+                <h2> <i class="glyphicon glyphicon-music"> Audio</i></h2>
+            </div>
+            <div class="panel-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 
+                1500s, when an unknown printer took a galley of type and scrambled it to make 
+                a type specimen book. It has survived not only five centuries, but also the 
+                leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+            <div class="panel panel-footer">
+                <%= link_to  "explore more", audios_path, class:'btn btn-block btn-success' %> 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-md-4">
+       <div class="panel panel-info">
+            <div class="panel panel-heading">
+                <h2> <i class="glyphicon glyphicon-film"> Video</i></h2>
+            </div>
+            <div class="panel-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 
+                1500s, when an unknown printer took a galley of type and scrambled it to make 
+                a type specimen book. It has survived not only five centuries, but also the 
+                leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+            <div class="panel panel-footer">
+                <%= link_to  "explore more", videos_path, class:'btn btn-block btn-success' %> 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-md-4">
+       <div class="panel panel-warning">
+            <div class="panel panel-heading">
+                <h2> <i class="glyphicon glyphicon-comment"> Blog</i></h2>
+            </div>
+            <div class="panel-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 
+                1500s, when an unknown printer took a galley of type and scrambled it to make 
+                a type specimen book. It has survived not only five centuries, but also the 
+                leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+            <div class="panel panel-footer">
+                <%= link_to  "explore more", posts_path, class:'btn btn-block btn-success' %> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); 
+}
+</script>
