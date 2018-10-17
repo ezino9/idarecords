@@ -32,6 +32,7 @@ gem 'paperclip', '~> 6.1'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.5'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
