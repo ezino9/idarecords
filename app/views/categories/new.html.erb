@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+       <h2 class="page-header"><span class="glyphicon glyphicon-upload"></span> Add New <span id="header">Category <i class="glyphicon glyphicon-music"></i></span></h2>
+       <%= form_for( @category) do |f| %>
+       <% if @category.errors%>
+        <% @category.errors.full_messages.each do |msg|%>
+         <div class="alert alert-danger"><%= msg %></div>
+        <%end%>
+        <%end%>
+       <div class="form-group">
+           <%= f.label :categoy_post%>
+           <%= f.text_field :post, class:'form-control'%>
+       </div>
+        <div class="form-group">
+           <%= f.label :category_song%>
+           <%= f.text_field :song, class:'form-control'%>
+       </div>
+       <div class="form-group">
+        <%= f.submit 'Add Category', class:'btn btn-primary'%>
+        <%= link_to  "Cancel", categories_path, class:'btn btn-default' %>
+       </div>
+       <% end %>
+    </div>
+    <div class="col-md-4"></div>
+</div>

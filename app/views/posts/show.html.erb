@@ -1,2 +1,31 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="row">
+    <div class="col-md-1">
+        
+    </div>
+    <div class="col-md-10">
+        <h2 class=page-header><%= @post.title%></h2>
+        <div class="thumbnail">
+           <%if @post.coverpicture.present?%>
+           <%= image_tag  @post.coverpicture, width:'100%' %>
+           <% else %> 
+           <%= image_tag  "img/image2.jpg" %>
+           <% end %> 
+        </div>
+        <div class="content">
+            <%= raw @post.body %>
+        </div>
+        <div class="footer">
+            <p><strong>Category: </strong><%= link_to  @post.category.post, category_path(@post) %></p>
+            <p><strong>Posted by: </strong><%= @post.user.name%></p>
+            <p><strong>Posted on: </strong><%= @post.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)')%></p>
+        </div>
+        <%= render  "partials/comments" %>
+        <br/>
+        <%= link_to  "Back", posts_path, class:'glyphicon glyphicon-download' %>
+    </div>
+    <br/>
+    <br/>
+    <div class="col-md-1">
+        
+    </div>
+</div>

@@ -1,120 +1,42 @@
 <i class="glyphicon glyphicon-film"></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-film"></i>
-<h2 class="page-header"><i class="glyphicon glyphicon-film"></i> Here you get your favorate musics video <i class="glyphicon glyphicon-film"></i></h2>
+<h2 class="page-header"><i class="glyphicon glyphicon-film"></i> Here you get your favorate videos <i class="glyphicon glyphicon-film"></i></h2>
 <div class="row">
-        <div class="col-xs-4 col-md-4">
-        <div class="panel panel-info">
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
+        <div class="col-xs-3 col-md-10">
+            <%if @videos.exists? %>
+                 <div class="row">
+                  <% @videos.each do |song|%>
+                     <div class="col-xs-3 col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <%if song.youtube_link.present?%>
+                               <iframe width="150" height="100" src="https://www.youtube.com/embed/DTqG35ko3wg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <%else%>
+                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                                <% end %>
+                                    <li><strong>Song name: </strong><%= song.song_title%></li>
+                                    <li><strong>Artist: </strong><%= song.singer_name %></li>
+                                    <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                                    
+                                    <%= link_to  "Play", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", category_path(:id => song.category_id), class:'btn btn-default readMore' %>
+                            </div>
+                        </div> 
+                    </div>
+                  <% end %>
+            <%= will_paginate @videos%>
+                </div>          
+            <%else%>
+                <p>No song published yet</p>
+            <% end %>
        </div>
-       <div class="panel panel-info">
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-       </div>
-       <div class="panel panel-info">
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-       </div>
-       <div class="panel panel-info">
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-       </div>
-       <div class="panel panel-info">
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-       </div>
-   </div>
-    <div class="col-xs-4 col-md-5">
-        <div class="panel panel-default">
-            <div class="panel panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail' %>
-                <i class="glyphicon glyphicon-play"></i> <i class="glyphicon glyphicon-pause"></i> <i class="glyphicon glyphicon-stop"> <i class="glyphicon glyphicon-volume-up"></i></i>
-            </div>
-            <div class="panel panel-footer">
-              <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <li><strong>Upload by: </strong>John Doe</li>
-                <li><strong>Upload on:</strong> 12/12/2018</li>  
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-             <div class="panel panel-heading">
-                 <h4><i class="glyphicon glyphicon-list"> Related Songs</i></h4>
-             </div>
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-            <div class="panel panel-footer">  
-            </div>
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-            <div class="panel panel-footer">   
-            </div>
-            <div class="panel-body">
-                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                <li><strong>Song name: </strong>lorem ipsum</li>
-                <li><strong>Artist: </strong>John Doe</li>
-                
-                <%= link_to  "Play", audio_path(:id), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", audios_path, class:'btn btn-default readMore' %>
-            </div>
-            <div class="panel panel-footer"> 
-            </div>
-        </div>
-    
-        
-    </div>
-    <div class="col-xs-4 col-md-2">
-        <ul class="list-group">
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Hip-Hop</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> RNB</li>
-            <li class="list-group-item"> <i class="glyphicon glyphicon-music"></i> Zouk</li>
-            <li class="list-group-item"> <i class="glyphicon glyphicon-music"></i> Classical</li>
-            <li class="list-group-item"> <i class="glyphicon glyphicon-music"></i> Country</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Reggae</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Jazz</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Rock</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Blues</li>
-            <li class="list-group-item"><i class="glyphicon glyphicon-music"></i> Gospel</li>
-        </ul>
+       
+    <div class="col-xs-2 col-md-2">
+        <% if @categories.exists%>
+          <% @categories.each do |category|%>
+                <li class="list-group-item"><%= link_to category.song, category_path(category), class:'glyphicon glyphicon-music'  %></li>
+          <%end%>
+        <%else%>
+        <p>No categories found</p>
+        <%end%>
     </div>
 </div>
-
 

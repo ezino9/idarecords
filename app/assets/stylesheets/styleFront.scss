@@ -31,7 +31,7 @@ nav{
 .nav li a{
     font-family: $font-navbar-item;
     font-size: $font-size-navbar-item;
-    color: black !important;
+    color: $color-navtxt !important;
     
     font-weight: bold;
 }
@@ -56,17 +56,70 @@ footer{
     height: $h-footer;
     background-color: $color-nav !important;
     text-align: center;
-    color: black !important;
+    color: $color-navtxt !important;
     font-family: $font-footer;
     font-size: $font-size-navbar-item;
-    padding-top: 0.5em;
-    position: relative;
-	top: 406px;
+    margin-top: 1.5em;
+    //position: relative;
+	//top: 406px;
 }
 #login{
     padding-top: 30px;
     padding-right: 10px;
 }
-#login a{
-    color: black;
+#login {
+    color: $color-navtxt;
+}
+#login a:hover{
+    color: $color-hover;
+    text-decoration: none;
+}
+
+//li uplaod(add new)
+nav .uplaod{
+    color: $color-navtxt;
+    height: $h-navbar-item;
+    //background-color: transparent!important;
+}
+//dropdown menu
+.navbar .dropdown{
+    width: $w-navbar-item;
+    -webkit-transform: none;
+	-ms-transform: none;
+    transform: none;
+    margin-top: 15px;
+    padding-bottom: 0px;
+}
+.navbar .dropdown #upload:hover{
+    background: none!important;
+    width: $w-navbar-item;
+    -webkit-transform: none;
+	-ms-transform: none;
+    transform: none;
+}
+.navbar .dropdown .dropdown-menu{
+    width: $w-navbar-item;
+    -webkit-transform: none;
+	-ms-transform: none;
+    transform: none;
+    margin-top: 10px;
+    border: none;
+    background: transparent!important;
+}
+.navbar .dropdown li{
+    margin-top: 0px;
+    width: $w-navbar-item;
+    -webkit-transform: none;
+	-ms-transform: none;
+    transform: none; 
+}
+.navbar .dropdown li a{
+    width: $w-navbar-item;
+    background-color: $color-nav!important;
+    color: $color-nav;
+}
+
+//customize index both for audio and video
+.panel-body, .panel-footer li{
+    list-style: none;
 }

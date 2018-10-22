@@ -1,2 +1,92 @@
-<h1>Audios#show</h1>
-<p>Find me in app/views/audios/show.html.erb</p>
+<i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-music"></i>
+<h2 class="page-header"><i class="glyphicon glyphicon-music"></i> Here you get your favorate musics audio <i class="glyphicon glyphicon-music"></i></h2>
+<div class="row">
+        <div class="col-xs-4 col-md-4">
+            <%if @audios.exists%>
+              <% @audios.each do |song|%>
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                      <%if song.coverpicture.present?%>
+                        <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
+                      <%else%>
+                        <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                      <% end %>
+                        <li><strong>Song name: </strong><%= song.title%></li>
+                        <li><strong>Artist: </strong><%= song.artist %></li>
+                        <li><strong>Upload on: </strong><%= song.created_at.to_time.strftime('%b %e, %Y') %></li>
+                        
+                        <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", category_path(:id => song.category_id), class:'btn btn-default readMore' %>
+                    </div>
+                </div>
+             <% end %>          
+            <%else%>
+                <p>No song published yet</p>
+            <% end %>
+            <%= will_paginate @audios%>
+   </div>
+    <div class="col-xs-4 col-md-5">
+        <div class="panel panel-default">
+            <div class="panel panel-body">
+               <% if @audio.coverpicture.present?%>
+                 <% if @audio.song_audio.present?%>
+                 <%= audio_tag  "#{@audio.song_audio}", controls: true, width:'100%', style:"background-image: url(#{@audio.coverpicture}); height: 300px; border-radius: 28px; top: 40%; left: 50%;"  %>
+               <% else%>
+                <p>No song uploaded</p>
+                <% end%>
+               <% else%>
+                <% if @audio.song_audio.present?%>
+                 <%= audio_tag  "#{@audio.song_audio}", controls: true, width:'100%', style:"background-image: url(img/image2.jpg); height: 300px; border-radius: 28px; top: 40%; left: 50%;"  %>
+               <% else%>
+                <p>No song uploaded</p>
+                <% end%>
+                <% end%>
+                
+            </div>
+            <div class="panel panel-footer">
+               <li><strong>Category: </strong><%= link_to  @audio.category.song, category_path(@audio) %></li>
+               <li><strong>Song name: </strong><%= @audio.title%></li>
+                <li><strong>Artist: </strong><%= @audio.artist%></li>
+                <li><strong>Upload by: </strong><%= @audio.user.name %></li>
+                <li><strong>Upload on: </strong><%= @audio.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)') %></li>  
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+             <div class="panel panel-heading">
+                 <h4><i class="glyphicon glyphicon-list"> Related Songs</i></h4>
+             </div>
+             <% if @related.exists%>
+                <% @related.each do |related|%>
+                  <div class="panel-body">
+                    <% if related.coverpicture.present? %>
+                       <%= image_tag  "#{related.coverpicture}", class:'thumbnail', width:'20%' %>
+                    <%else%>
+                       <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
+                    <%end%>
+                    <li><strong>Song name: </strong><%= related.title%></li>
+                    <li><strong>Artist: </strong><%= related.artist%></li>
+                    <%= link_to  "Play", audio_path(related), class:'glyphicon glyphicon-ok btn btn-success' %>
+                </div>
+                <div class="panel panel-footer">  
+                </div>
+                <% end%>
+             <%else%>
+             <p>No Music with the same category found!</p>
+             <%end%>
+            <%= will_paginate @related %>
+
+        </div>
+    
+        
+    </div>
+    <div class="col-xs-4 col-md-2">
+        <% if @categories.exists%>
+          <% @categories.each do |category|%>
+                <li class="list-group-item"><%= link_to category.song, category_path(category), class:'glyphicon glyphicon-music'  %></li>
+          <%end%>
+        <%else%>
+        <p>No categories found</p>
+        <%end%>
+    </div>
+</div>
+

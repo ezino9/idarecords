@@ -29,10 +29,25 @@
             <li class="<%= params[:controller] == 'videos' ? 'active' : ''%>"><%= link_to  "Videos", videos_path%></li>
             <li class="<%= params[:controller] == 'posts' ? 'active' : ''%>"><%= link_to  "Blog", posts_path%></li>
             <li class="<%= params[:controller] == 'contacts' ? 'active' : ''%>"><%= link_to  "Contact", contact_path%></li>
+            <%if current_user %>
+            <li class="dropdown">
+            <a id="upload"> <i class="glyphicon glyphicon-upload ">NEW</i><span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><%= link_to  "Audio", new_audio_path%></li>
+              <li><%= link_to  "Video", new_video_path%></li>
+              <li><%= link_to  "Post", new_post_path%></li>
+            </ul>
+          </li>
+          <% end %>                
           </ul>
           <div class="container">
             <ul class="navbar navbar-right" id="login">
-             <%= link_to  " Login ", root_path, class:'glyphicon glyphicon-user pull-right' %>
+             <%if current_user %>         
+                <%= current_user.email %>&nbsp;&nbsp; 
+                <%= link_to  "Logout ", destroy_user_session_path, method: :delete, class:' pull-right' %>
+              <% else%>
+             <%= link_to  " Login ", new_user_session_path, class:'glyphicon glyphicon-user pull-right' %>
+             <% end %>
             </ul>
           </div>
         </div><!--/.nav-collapse -->
@@ -40,19 +55,15 @@
 
     <div class="container" id="container">
 
-    <% if params[:controller]== 'home' %>
-
-      <form class="form  form-inline pull-right">
-            <div class="form-group">
-              <input type="text" placeholder="...type and search..." class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-search"> Search</i></button>
-          </form>
-    <%end%>
+      <%= render  "partials/search" %>     
     <br>
     <br>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice]%>
+      <div class="alert alert-success"><%= flash[:notice]%></div>
+    <% end %>
+    <% if flash[:alert]%>
+      <div class="alert alert-danger"><%= flash[:alert] %></div>
+    <% end %>
 
       <%= yield %>
 
@@ -60,5 +71,18 @@
     <footer>
        &copy; copyright Idarecords | Alright reserved
      </footer>
+
+
+     <script>
+       var dropdown = document.querySelector('.dropdown');
+       $(function(){
+         $('.dropdown').hover(function(){
+           $('.dropdown-menu').css('display','block');
+         });
+         $('.dropdown').mouseleave(function(){
+           $('.dropdown-menu').css('display','none');
+         });
+       });
+     </script>
   </body>
 </html>

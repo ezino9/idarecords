@@ -28,11 +28,26 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+# gem 'bootstrap'
+gem 'jquery-rails'
 gem 'paperclip', '~> 6.1'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.5'
 gem 'devise-bootstrap-views', '~> 1.0'
+#gem 'autoprefixer-rails'
+#gem 'yt', '~> 0.32.2'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'youtube_addy', '~> 1.0', '>= 1.0.4'
+#gem 'editor', '~> 0.0.8'
+#gem 'wysiwyg', '~> 0.0.1'
+#gem "wysiwyg-rails"
+#gem "font-awesome-sass"
+gem 'activeadmin'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
+gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

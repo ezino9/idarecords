@@ -1,35 +1,47 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h2 class="page-header">The Lattest News</h2>
+<div class="row">
+   <div class="col-md-10">
+      <div class="row">
+        <% if @posts.exists? %>
+            <% @posts.each do |post| %>
+               <div class="col-md-4">
+                   <div class="panel panel-default">
+                      <div class="panel panel-heading">
+                         <%= link_to  post.title, post_path(post) %> 
+                      </div>
+                      <div class="panel panel-body">
+                          <% if post.coverpicture.present? %>
+                            <%= image_tag  post.coverpicture %>
+                          <% else %>
+                            <%= image_tag  "img/image2.jpg" %>
+                          <% end %><br/>
+                          <%= raw post.body.truncate(100)%>
+                          <p><strong>Posted on: </strong><%= post.created_at.to_time.strftime('%b %e, %Y')%></p>
+                          <p><strong>Posted by: </strong><%= post.user.name%></p>
+                      </div>
+                      <div class="panel panel-footer">
+                          <%= link_to  "Read more", post_path(post), class:'btn btn-block btn-success' %>
+                      </div> 
+                   </div>
+               </div>
+            <% end%>
+        <%= will_paginate @posts%>
+        <% else %>
+           <p>No post available!!</p>
+        <% end %> 
+      </div> 
+   </div>
+   <div class="col-md-2">
+       <% if @categories.exists %>
+           <% @categories.each do |category| %>
+             <% if category.post.present? %>               
+               <li class="list-group-item"><%= link_to  category.post, category_path(category) %></li>
+             <% end %>
+           <% end %>
+       <% else%>
+       <p>No category Available</p>
+       <% end %>
+   </div> 
+</div>
 
-<p><h2>What is Lorem Ipsum?</h2>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-Lorem Ipsum has been the industry's standard dummy text ever since the 
-1500s, when an unknown printer took a galley of type and scrambled it to make 
-a type specimen book. It has survived not only five centuries, but also the 
-leap into electronic typesetting, remaining essentially unchanged. It was 
-popularised in the 1960s with the release of Letraset sheets containing 
-Lorem Ipsum passages, and more recently with desktop publishing software 
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p><h2>What is Lorem Ipsum?</h2>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-Lorem Ipsum has been the industry's standard dummy text ever since the 
-1500s, when an unknown printer took a galley of type and scrambled it to make 
-a type specimen book. It has survived not only five centuries, but also the 
-leap into electronic typesetting, remaining essentially unchanged. It was 
-popularised in the 1960s with the release of Letraset sheets containing 
-Lorem Ipsum passages, and more recently with desktop publishing software 
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-<p><h2>What is Lorem Ipsum?</h2>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-Lorem Ipsum has been the industry's standard dummy text ever since the 
-1500s, when an unknown printer took a galley of type and scrambled it to make 
-a type specimen book. It has survived not only five centuries, but also the 
-leap into electronic typesetting, remaining essentially unchanged. It was 
-popularised in the 1960s with the release of Letraset sheets containing 
-Lorem Ipsum passages, and more recently with desktop publishing software 
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-<p><h2>What is Lorem Ipsum?</h2>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
