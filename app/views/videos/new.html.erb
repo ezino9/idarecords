@@ -29,10 +29,6 @@
            <%= f.text_field :youtube_link, class:'form-control'%>
        </div>
        <div class="form-group">
-           <%= f.label :cover_picture, class:'glyphicon glyphicon-upload' %>
-           <%= f.file_field :coverpicture, class:'form-control'%>
-       </div>
-       <div class="form-group">
            <%= f.text_field :user_id, class:'hidden', value:"#{current_user.id}"%>
        </div>
        <div class="form-group">

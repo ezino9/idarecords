@@ -5,14 +5,16 @@
         </div>
         <%= submit_tag "Search", :name => nil, class:'btn btn-success' %>
   <% end %>
-<% elsif params[:controller] == "audios"%>
+  <% end %>
+<% if params[:controller] == "audios"%>
    <%= form_tag(audios_index_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
         <div class="form-group">
             <%= text_field_tag :search, params[:search], placeholder:"--Search Audios--", class:'form-control'%>
         </div>
         <%= submit_tag "Search", :name => nil, class:'btn btn-success' %>
    <% end %>
-<% elsif params[:controller] == "videos" %>
+   <% end %>
+<% if params[:controller] == "videos" %>
   <%= form_tag(videos_index_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
         <div class="form-group">
             <%= text_field_tag :search, params[:search], placeholder:"--Search Videos--", class:'form-control'%>

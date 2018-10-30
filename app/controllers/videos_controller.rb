@@ -32,12 +32,10 @@ class VideosController < ApplicationController
     if params[:search]
       @videos = Video.search(params[:search]).all.order('created_at DESC')
       @types = Type.all
-      @related = Video.where("type_id = #{:type_id}").order('created_at DESC')
     
     else
       @videos = Video.all.order('created_at DESC')
       @types = Type.all
-      @related = Video.where("type_id = #{:type_id}").order('created_at DESC')
     end
   end
 

@@ -1,4 +1,3 @@
-
 <i class="glyphicon glyphicon-film" ></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-film"></i>
 <h2 class="page-header" text-center><i class="glyphicon glyphicon-film"></i> <%= @video.song_title%> <i class="glyphicon glyphicon-film"></i>
   <% if current_user%>
@@ -39,64 +38,35 @@
     </div>
 </div> <!-- End of show -->
 <div class="row">
-        <div class="col-md-5">
-            <%if @videos.exists%>
-              <div class="panel panel-default">
-             <div class="panel panel-heading">
-                 <h4><i class="glyphicon glyphicon-list"> Lattest Uploads</i></h4>
-             </div>
-             
-                <% @videos.each do |video|%>
-                  <div class="panel-body">
-                    <% if video.youtube_link.present? %>
-                               <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= video.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                       
-                    <%else%>
-                       <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                    <%end%>
-                    <li><strong>Song name: </strong><%= video.song_title%></li>
-                    <li><strong>Artist: </strong><%= video.singer_name%></li>
-                    <%= link_to  "View", video_path(video), class:'glyphicon glyphicon-ok btn btn-success' %>
+    <div class="col-md-10">
+       <%if @videos.exists? %>
+                <div class="row">
+                <% @videos.each do |song|%>
+                    <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <%if song.youtube_link.present?%>
+                            <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <%else%>
+                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                            <% end %>
+                                <li><strong>Song name: </strong><%= song.song_title%></li>
+                                <li><strong>Artist: </strong><%= song.singer_name %></li>
+                                <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                                
+                                <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                        </div>
+                    </div> 
                 </div>
-                <div class="panel-footer">  
-                </div>
-                <% end%>
-             </div>
-             <%else%>  
-             <p>No New uploads found!</p>
-            <% end %>
-            <!-- pagination -->
-   </div>
-    <div class="col-md-5">
-        <% if @related.exists%>
-          <div class="panel panel-default">
-             <div class="panel panel-heading">
-                 <h4><i class="glyphicon glyphicon-list"> Related Songs</i></h4>
-             </div>
-             
-                <% @related.each do |related|%>
-                  <div class="panel-body">
-                    <% if related.youtube_link.present? %>
-                               <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= related.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                       
-                    <%else%>
-                       <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                    <%end%>
-                    <li><strong>Song name: </strong><%= related.song_title%></li>
-                    <li><strong>Artist: </strong><%= related.singer_name%></li>
-                    <%= link_to  "View", video_path(related), class:'glyphicon glyphicon-ok btn btn-success' %>
-                </div>
-                <div class="panel-footer">  
-                </div>
-                <% end%>
-             </div>
-             <%else%>  
-             <p>No Video with the same category found!</p>
-             <%end%>
-            <!-- pagination  related-->
-          
-    
-        
+                <% end %>
+        <!-- pagination -->
+            </div>          
+        <%else%>
+            <p>No song published yet</p>
+        <% end %>
+    </div>
+    <div class="col-md-2">
+       
     </div>
 </div>
 

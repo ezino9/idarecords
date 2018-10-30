@@ -30,14 +30,12 @@ class AudiosController < ApplicationController
 
   def index
     if params[:search]
-      @audios = Audio.search(params[:search]).all.order('created_at DESC').page(params[:page]).per(1)
+      @audios = Audio.search(params[:search]).all.order('created_at DESC').page(params[:page]).per(20)
       @types = Type.all
-      @related = Audio.where("type_id = #{:type_id}").order('created_at DESC').page params[:page]
 
     else
-      @audios = Audio.all.order('created_at DESC').page(params[:page]).per(5)
+      @audios = Audio.all.order('created_at DESC').page(params[:page]).per(20)
       @types = Type.all
-      @related = Audio.where("type_id = #{:type_id}").order('created_at DESC').page(params[:page]).per(1)
     end
   end
 

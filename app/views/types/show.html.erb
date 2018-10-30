@@ -9,15 +9,15 @@
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.coverpicture.present?%>
-                                    <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
+                                    <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'200px', height:'180px' %>
                                 <%else%>
-                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'200px', height:'180px' %>
                                 <% end %>
                                     <li><strong>Song name: </strong><%= song.title%></li>
                                     <li><strong>Artist: </strong><%= song.artist %></li>
                                     <li><strong>Upload on: </strong> <%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
                                     
-                                    <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                                    <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %>
                             </div>
                         </div> 
                      </div>
@@ -37,7 +37,7 @@
                             <div class="panel-body">
                                 <%if song.youtube_link.present?%>
                                 
-                               <iframe width="150" height="100" src="https://www.youtube.com/embed/#{<%= song.youtube_link %>}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                               <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <%else%>
                                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
                                 <% end %>
@@ -45,7 +45,7 @@
                                     <li><strong>Artist: </strong><%= song.singer_name %></li>
                                     <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
                                     
-                                    <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related videos...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                                    <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %>
                             </div>
                         </div> 
                      </div>

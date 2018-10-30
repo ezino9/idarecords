@@ -45,69 +45,38 @@
     </div>
 </div> <!-- show audio page -->
 <div class="row">
-        <div class="col-md-5">
-            <%if @audios.exists? %>
-                <div class="panel panel-info">
-                    <div class="panel panel-heading">
-                        <h4><i class="glyphicon glyphicon-list"> New uploads</i></h4>
-                    </div>
-                    <% @audios.each do |song|%>
-                    <div class="panel-body">
-                      <%if song.coverpicture.present?%>
-                        <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
-                      <%else%>
-                        <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                      <% end %>
-                        <li><strong>Song name: </strong><%= song.title%></li>
-                        <li><strong>Artist: </strong><%= song.artist %></li>
-                        <li><strong>Upload on: </strong><%= song.created_at.to_time.strftime('%b %e, %Y') %></li>
-                        
-                        <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Explore related music...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
-                    </div>
-                    <div class="panel-footer">
-                        
-                    </div>
-                    <% end %>
+    <div class="col-md-10">
+        <%if @audios.exists? %>
+            <div class="row">
+                <% @audios.each do |song|%>
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <%if song.coverpicture.present?%>
+                                <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
+                            <%else%>
+                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                            <% end %>
+                                <li><strong>Song name: </strong><%= song.title%></li>
+                                <li><strong>Artist: </strong><%= song.artist %></li>
+                                <li><strong>Upload on: </strong> <%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                                
+                                <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                        </div>
+                    </div> 
                 </div>
-                       
-            <%else%>
-                <p>No song published yet</p>
-            <% end %>
-            <!-- pagination -->
-            <%= paginate @audios, :theme => 'twitter-bootstrap-3' %>
-   </div>
-    <div class="col-md-5">
-        
-
-        <div class="panel panel-default">
-             <div class="panel panel-heading">
-                 <h4><i class="glyphicon glyphicon-list"> Related Songs</i></h4>
-             </div>
-             <% if @related.exists? %>
-                <% @related.each do |related|%>
-                  <div class="panel-body">
-                    <% if related.coverpicture.present? %>
-                       <%= image_tag  "#{related.coverpicture}", class:'thumbnail', width:'20%' %>
-                    <%else%>
-                       <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'20%' %>
-                    <%end%>
-                    <li><strong>Song name: </strong><%= related.title%></li>
-                    <li><strong>Artist: </strong><%= related.artist%></li>
-                    <%= link_to  "Play", audio_path(related), class:'glyphicon glyphicon-ok btn btn-success' %>
-                </div>
-                <div class="panel panel-footer">  
-                </div>
-                <% end%>
-             <%else%>
-             <p>No music with the same category found!</p>
-             <%end%>
-            <!-- pagination related-->
-            <%= paginate @related, :theme => 'twitter-bootstrap-3' %>
-
-        </div>
-    
+                <% end %>
+            </div>
+                    
+        <%else%>
+            <p>No song published yet</p>
+        <% end %>
+        <!-- pagination -->
+        <%= paginate @audios, :theme => 'twitter-bootstrap-3' %>
+    </div>
+    <div class="col-md-2">
         
     </div>
-    
 </div>
+
 
