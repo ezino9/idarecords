@@ -37,17 +37,21 @@ gem 'devise', '~> 4.5'
 gem 'devise-bootstrap-views', '~> 1.0'
 #gem 'autoprefixer-rails'
 #gem 'yt', '~> 0.32.2'
-gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+#gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'youtube_addy', '~> 1.0', '>= 1.0.4'
 #gem 'editor', '~> 0.0.8'
 #gem 'wysiwyg', '~> 0.0.1'
 #gem "wysiwyg-rails"
 #gem "font-awesome-sass"
 gem 'activeadmin'
-gem 'cancan' # or cancancan
-gem 'draper'
-gem 'pundit'
+#gem 'cancan' # or cancancan
+#gem 'draper'
+#gem 'pundit'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
+gem "font-awesome-rails"
+gem 'normalize-rails'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'bootstrap-kaminari-views'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -3,10 +3,11 @@
         
     </div>
     <div class="col-md-10">
+      
         <h2 class=page-header><%= @post.title%></h2>
         <div class="thumbnail">
            <%if @post.coverpicture.present?%>
-           <%= image_tag  @post.coverpicture, width:'100%' %>
+           <%= image_tag  "#{@post.coverpicture}", width:'100%' %>
            <% else %> 
            <%= image_tag  "img/image2.jpg" %>
            <% end %> 
@@ -14,17 +15,20 @@
         <div class="content">
             <%= raw @post.body %>
         </div>
-        <div class="footer">
-            <p><strong>Category: </strong><%= link_to  @post.category.post, category_path(@post) %></p>
+        <div class="">
+            <p><strong>Category: </strong><%= link_to  @post.category.name, category_path(@post) %></p>
             <p><strong>Posted by: </strong><%= @post.user.name%></p>
             <p><strong>Posted on: </strong><%= @post.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)')%></p>
         </div>
+        <% if current_user%>
+        <% if @post.user_id == current_user.id%>
+            <%= link_to  "Edit post ", edit_post_path(@post), class:'btn btn-info pull-right' %>
+        <% end %>
+        <% end %>
         <%= render  "partials/comments" %>
         <br/>
-        <%= link_to  "Back", posts_path, class:'glyphicon glyphicon-download' %>
+        <%= link_to  "Back", posts_path, class:'glyphicon glyphicon-arrow-left' %>
     </div>
-    <br/>
-    <br/>
     <div class="col-md-1">
         
     </div>

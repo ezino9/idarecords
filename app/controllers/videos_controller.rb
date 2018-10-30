@@ -16,21 +16,28 @@ class VideosController < ApplicationController
   end
 
   def edit
+    @video = Video.find(params[:id])
   end
 
   def update
+    @video = Video.find(params[:id])
+    if @video.update(video_params)
+      redirect_to video_path(@video), notice: 'All changes have been saved'
+    else
+      render 'edit'
+    end
   end
 
   def index
     if params[:search]
-      @videos = Video.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
-      @categories = Category.all
-      @related = Video.where("category_id = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+      @videos = Video.search(params[:search]).all.order('created_at DESC')
+      @types = Type.all
+      @related = Video.where("type_id = #{:type_id}").order('created_at DESC')
     
     else
-      @videos = Video.all.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
-      @categories = Category.all
-      @related = Video.where("category_id = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+      @videos = Video.all.order('created_at DESC')
+      @types = Type.all
+      @related = Video.where("type_id = #{:type_id}").order('created_at DESC')
     end
   end
 
@@ -43,6 +50,6 @@ class VideosController < ApplicationController
 
   private
   def video_params
-    params.require(:video).permit(:song_title, :singer_name, :rabel_name, :category_id, :user_id, :youtube_link)
+    params.require(:video).permit(:song_title, :singer_name, :rabel_name, :type_id, :user_id, :youtube_link)
   end
 end

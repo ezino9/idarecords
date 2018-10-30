@@ -1,2 +1,46 @@
-<h1>Audios#edit</h1>
-<p>Find me in app/views/audios/edit.html.erb</p>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+       <h2 class="page-header"><span class="glyphicon glyphicon-upload"></span> Upload New <span id="header">Audio <i class="glyphicon glyphicon-music"></i></span></h2>
+       <%= form_for( @audio ) do |f| %>
+       <% if @audio.errors%>
+        <% @audio.errors.full_messages.each do |msg|%>
+         <div class="alert alert-danger"><%= msg %></div>
+        <%end%>
+        <%end%>
+       <div class="form-group">
+           <%= f.label :song_title%>
+           <%= f.text_field :title, class:'form-control'%>
+       </div>
+        <div class="form-group">
+           <%= f.label :singer_name%>
+           <%= f.text_field :artist, class:'form-control'%>
+       </div>
+       <div class="form-group">
+           <%= f.label :category%>
+           <%= f.select :type_id, Type.all.collect {|x|[x.name, x.id]},{:include_blank => 'Select category'}, class:'form-control'%>
+       </div>
+        <div class="form-group">
+           <%= f.label :record_name %>
+           <%= f.text_field :label, class:'form-control'%>
+       </div>
+        <div class="form-group">
+           <%= f.label :cover_picture, class:'glyphicon glyphicon-upload' %>
+           <%= f.file_field :coverpicture, class:'form-control'%>
+       </div>
+        <div class="form-group">
+           <%= f.label :pick_song, class:'glyphicon glyphicon-upload'%>
+           <%= f.file_field :song_audio, class:'form-control'%>
+       </div>
+       <div class="form-group">
+          <%= f.label :user_id, class:'sr-only'%>
+           <%= f.number_field :user_id, class:'form-control hidden', value:"#{current_user.id}"%>
+       </div>
+       <div class="form-group">
+        <%= f.submit 'Publish Song', class:'btn btn-primary'%>
+        <%= link_to  "Cancel", root_path, class:'btn btn-default' %>
+       </div>
+       <% end %>
+    </div>
+    <div class="col-md-4"></div>
+</div>

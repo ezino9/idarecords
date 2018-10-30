@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'types/show'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   mount Ckeditor::Engine => '/ckeditor'
   get 'comments/new'
   get 'categories/new'
@@ -33,9 +36,10 @@ Rails.application.routes.draw do
   get 'contact' => 'contacts#new', :as => 'contact'
   get 'contacts/create'
   get 'about' => 'about#index', :as => 'about'
-  get 'home/index'
+  get 'home' => 'home#index', as: 'home'
 
   resources :contacts, :audios, :videos, :posts, :categories, :comments
+  resources :types, only: [:show]
 
   resources :posts do
     resources :comments

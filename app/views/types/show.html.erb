@@ -1,0 +1,60 @@
+<h2 class="page-header"><%= @type.name %></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <% if @audios.exists? %>
+                <h3 class="page-header"> Related Audios</h3>
+                  <% @audios.each do |song|%>
+                     <div class="col-md-8">
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <%if song.coverpicture.present?%>
+                                    <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
+                                <%else%>
+                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                                <% end %>
+                                    <li><strong>Song name: </strong><%= song.title%></li>
+                                    <li><strong>Artist: </strong><%= song.artist %></li>
+                                    <li><strong>Upload on: </strong> <%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                                    
+                                    <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                            </div>
+                        </div> 
+                     </div>
+                  <% end %>          
+            <%else%>
+                <p>No audio published yet, come back very soon!!</p>
+            <% end %>
+            <!-- pagination -->
+            <%= paginate @audios, :theme => 'twitter-bootstrap-3' %>            
+        </div><!-- End of Audios by type -->
+        <div class="col-md-6">
+          <%if @videos.exists? %>
+                <h3 class="page-header"> Related Videos</h3>                
+                  <% @videos.each do |song|%>
+                     <div class="col-md-8">
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <%if song.youtube_link.present?%>
+                                
+                               <iframe width="150" height="100" src="https://www.youtube.com/embed/#{<%= song.youtube_link %>}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <%else%>
+                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                                <% end %>
+                                    <li><strong>Song name: </strong><%= song.song_title%></li>
+                                    <li><strong>Artist: </strong><%= song.singer_name %></li>
+                                    <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                                    
+                                    <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related videos...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                            </div>
+                        </div> 
+                     </div>
+                  <% end %>
+                 <!-- pagination -->
+                <%= paginate @videos, :theme => 'twitter-bootstrap-3' %>        
+            <%else%>
+                <p>No Video published yet, come back very soon!!</p>
+            <% end %>  
+        </div><!-- End of videos by type -->
+    </div>
+</div>

@@ -16,22 +16,28 @@ class AudiosController < ApplicationController
   end
 
   def edit
+    @audio = Audio.find(params[:id])
   end
 
   def update
+    @audio = Audio.find(params[:id])
+    if @audio.update(audio_params)
+      redirect_to audio_path(@audio), notice: 'All changes have been saved'
+    else
+      render 'edit'
+    end
   end
 
   def index
     if params[:search]
-      @audios = Audio.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
-      @categories = Category.all
-      @related = Audio.where("category_id = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+      @audios = Audio.search(params[:search]).all.order('created_at DESC').page(params[:page]).per(1)
+      @types = Type.all
+      @related = Audio.where("type_id = #{:type_id}").order('created_at DESC').page params[:page]
 
     else
-      @audios = Audio.all.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
-      @categories = Category.all
-      @related = Audio.where("category_id = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-
+      @audios = Audio.all.order('created_at DESC').page(params[:page]).per(5)
+      @types = Type.all
+      @related = Audio.where("type_id = #{:type_id}").order('created_at DESC').page(params[:page]).per(1)
     end
   end
 
@@ -42,6 +48,6 @@ class AudiosController < ApplicationController
   def destroy
   end
   private def audio_params
-    params.require(:audio).permit(:title, :coverpicture,:artist, :user_id, :label, :category_id,   :song_audio)
+    params.require(:audio).permit(:title, :coverpicture, :artist, :user_id, :label, :type_id,   :song_audio)
   end
 end

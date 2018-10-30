@@ -1,6 +1,6 @@
 class Audio < ApplicationRecord
   belongs_to :user
-  belongs_to :category
+  belongs_to :type
   #validates picture to uplaod
   has_attached_file :coverpicture, styles: { medium: "300x300>", thumb: "100x100#" } #default_url: "/images/:style/missing.png"
   validates_attachment_content_type :coverpicture, content_type: /\Aimage\/.*\Z/

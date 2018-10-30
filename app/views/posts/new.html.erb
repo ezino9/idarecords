@@ -18,7 +18,7 @@
        </div>
        <div class="form-group">
            <%= f.label :category%>
-           <%= f.select :category_id, Category.order(:post).collect {|x|[x.post, x.id]}, {:include_blank => 'Select category'}, class:'form-control'%>
+           <%= f.select :category_id, Category.order(:name).collect {|x|[x.name, x.id]}, {:include_blank => 'Select category'}, class:'form-control'%>
        </div>
        <div class="form-group">
            <%= f.text_field :user_id, class:'hidden', value:"#{current_user.id}"%>

@@ -1,11 +1,15 @@
 <i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-music"></i>
-<h2 class="page-header"><i class="glyphicon glyphicon-music"></i> Here you get your favorate musics audio <i class="glyphicon glyphicon-music"></i></h2>
+<h2 class="page-header"><i class="glyphicon glyphicon-music"></i> Here you get your favorate musics audio <i class="glyphicon glyphicon-music"></i>
+  <% if current_user%>
+    <%= link_to  "Upload ", new_audio_path, class:'btn btn-info pull-right' %>
+  <% end %>
+</h2>
 <div class="row">
-        <div class="col-xs-3 col-md-10">
+        <div class="col-md-10">
             <%if @audios.exists? %>
                  <div class="row">
                   <% @audios.each do |song|%>
-                     <div class="col-xs-3 col-md-4">
+                     <div class="col-md-4">
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.coverpicture.present?%>
@@ -17,7 +21,7 @@
                                     <li><strong>Artist: </strong><%= song.artist %></li>
                                     <li><strong>Upload on: </strong> <%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
                                     
-                                    <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", category_path(:id => song.category_id), class:'btn btn-default readMore' %>
+                                    <%= link_to  "Play", audio_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
                             </div>
                         </div> 
                     </div>
@@ -26,13 +30,14 @@
             <%else%>
                 <p>No song published yet</p>
             <% end %>
-            <%= will_paginate @audios%>
+            <!-- pagination -->
+            <%= paginate @audios, :theme => 'twitter-bootstrap-3' %>
        </div>
        
-    <div class="col-xs-2 col-md-2">
-        <% if @categories.exists%>
-          <% @categories.each do |category|%>
-                <li class="list-group-item"><%= link_to category.song, category_path(category), class:'glyphicon glyphicon-music'  %></li>
+    <div class="col-md-2">
+        <% if @types.exists%>
+          <% @types.each do |type|%>
+                <li class="list-group-item"><%= link_to type.name, type_path(type), class:'glyphicon glyphicon-music'  %></li>
           <%end%>
         <%else%>
         <p>No categories found</p>

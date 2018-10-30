@@ -1,32 +1,44 @@
-<div class="form-signin">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   <h2 class="form-signin-heading"><i class="glyphicon glyphicon-user" style="color: #006400; font-weight: bold;"> User </i>Login</h2>
-   <hr>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+<div class="row">
+  <div class="col-md-4">
+    
   </div>
+  <div class="col-md-4">
+    <div class="form-signin">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-user" style="color: #006400; font-weight: bold;"> User </i>Login</h2>
+        <hr>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-  </div>
+        <div class="form-group">
+          <i class=""></i><%= f.label :password %>
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
 
-  
-    <div class="form-group rember">
-      <% if devise_mapping.rememberable? %>
-      <%= f.check_box :remember_me, class: 'form-check-input' %>
-      <%= f.label :remember_me, class: 'form-check-label' do %>
-        <%= resource.class.human_attribute_name('remember_me') %>  
-      <% end %> 
-      <%= render 'devise/shared/links' %>
         
-    </div>
-  <% end %>
+          <div class="form-group rember">
+            <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <%= f.label :remember_me, class: 'form-check-label' do %>
+              <%= resource.class.human_attribute_name('remember_me') %>  
+            <% end %> 
+            <%= render 'devise/shared/links' %>
+              
+          </div>
+        <% end %>
 
-  <div class="form-group">
-    <%= f.submit  t('.sign_in'), class: 'btn btn-block btn-primary' %>
-  </div>
+        <div class="form-group">
+          <%= f.submit  t('.sign_in'), class: 'btn btn-block btn-primary' %>
+        </div>
 <% end %>
 </div>
+  </div>
+  <div class="col-md-4">
+    
+  </div>
+</div>
+
+
 

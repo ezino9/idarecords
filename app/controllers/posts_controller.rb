@@ -14,17 +14,24 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: 'All changes have been saved'
+    else
+      render 'edit'
+    end
   end
 
   def index
     if params[:search]
-      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 30, :page => params[:page])
+      @posts = Post.search(params[:search]).all.order('created_at DESC')
       @categories = Category.all
     else
-      @posts = Post.all.order('created_at DESC').paginate(:per_page => 30, :page => params[:page])
+      @posts = Post.all.order('created_at DESC')
       @categories = Category.all
     end
   end
@@ -38,6 +45,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :coverpicure, :category_id, :user_id)
+    params.require(:post).permit(:title, :body, :coverpicture, :category_id, :user_id)
   end
 end
