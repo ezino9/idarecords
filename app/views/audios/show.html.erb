@@ -12,7 +12,7 @@
             <div class="panel panel-body">
                <% if @audio.coverpicture.present?%>
                  <% if @audio.song_audio.present?%>
-                 <%= audio_tag  "#{@audio.song_audio}", controls: true, width:'100%', style:"background-image: url(#{@audio.coverpicture}); height: 300px; border-radius: 28px; top: 40%; left: 50%;"  %>
+                 <%= audio_tag  "#{@audio.song_audio}", controls: true, width:'100%', style:"background-image: url(#{@audio.coverpicture}); height: 420px; border-radius: 28px; width: 100%; /*background-repeat: no-repeat;*/"  %>
                <% else%>
                 <p>No song uploaded</p>
                 <% end%>
@@ -53,9 +53,9 @@
                     <div class="panel panel-info">
                         <div class="panel-body">
                             <%if song.coverpicture.present?%>
-                                <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'30%' %>
+                                <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'100%', height:'200px' %>
                             <%else%>
-                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'100%', height:'200px' %>
                             <% end %>
                                 <li><strong>Song name: </strong><%= song.title%></li>
                                 <li><strong>Artist: </strong><%= song.artist %></li>

@@ -29,6 +29,9 @@ nav{
     background-color: $color-nav !important;
     height: $h-navbar;
 }
+nav.navbar{
+    border: 0px;
+}
 
 //navbar-brand
 .navbar-brand{
@@ -67,7 +70,7 @@ nav ul > li a:hover{
 
 //container
 #container{
-    margin-top: 2em;
+    padding-top: 6em;
 }
 
 
@@ -163,4 +166,46 @@ nav .uplaod{
     margin-top: 20%;
 
 	background-color: transparent;
+}
+
+
+//media query
+@media (max-width: 990px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+        background-color: $color-nav !important;
+    }
+    .navbar-toggle:hover, .navbar-toggle:focus {
+        display: block;
+        background-color: $color-navtxt !important;
+    }
+ 
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+        background-color: $color-nav !important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
 }

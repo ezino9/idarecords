@@ -3,18 +3,28 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
     content title: proc{ I18n.t("active_admin.dashboard") } do
-      section "Recent Audios", :priority => 1 do
-        table_for Audio.order("id desc").limit(15) do
+      section "Recent Messages", :priority => 1 do
+        table_for Contact.order("created_at desc").limit(15) do
           column :id
-          column "Song Title", :title do |audio|
-            link_to audio.title, [:admin, audio]
+          column "Name", :name do |contact|
+            link_to contact.name, [:admin, contact]
           end
-          column "Song Owner", :artist
-          column "Categtoy", :type
-          column "Uploaded by", :user
+          column "Email address", :email
+          column "Sent on", :created_at
       end
     end
-    section "Recent Videos", :priority => 2 do
+    section "Recent Audios", :priority => 2 do
+      table_for Audio.order("id desc").limit(15) do
+        column :id
+        column "Song Title", :title do |audio|
+          link_to audio.title, [:admin, audio]
+        end
+        column "Song Owner", :artist
+        column "Categtoy", :type
+        column "Uploaded by", :user
+    end
+  end
+    section "Recent Videos", :priority => 3 do
       table_for Video.order("id desc").limit(15) do
         column :id
         column "Song Title", :song_title do |video|
@@ -25,7 +35,7 @@ ActiveAdmin.register_page "Dashboard" do
         column "Uploaded by", :user
     end
   end
-  section "Recent Posts", :priority => 3 do
+  section "Recent Posts", :priority => 4 do
     table_for Post.order("id desc").limit(15) do
       column :id
       column "Post Title", :title do |post|

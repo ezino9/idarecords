@@ -15,7 +15,7 @@
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.coverpicture.present?%>
-                                   <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'150px', height:'100px' %>
+                                   <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'100%', height:'200px' %>
                                 <%else%>
                                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
                                 <% end %>

@@ -45,7 +45,11 @@ class VideosController < ApplicationController
 
   def destroy
   end
-
+  
+  def catch_404
+    raise ActionController::RoutingError.new(params[:path])
+    raise ActiveRecord::RecordNotFound.new(params[:path])
+  end
   private
   def video_params
     params.require(:video).permit(:song_title, :singer_name, :rabel_name, :type_id, :user_id, :youtube_link)

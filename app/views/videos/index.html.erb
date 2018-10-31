@@ -13,7 +13,7 @@
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.youtube_link.present?%>
-                               <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                               <iframe width="100%" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <%else%>
                                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
                                 <% end %>
