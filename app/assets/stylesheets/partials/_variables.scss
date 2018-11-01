@@ -1,14 +1,15 @@
 //Nav colors and styles
-$color-nav: #006400;
+$color-nav: #1B1437;
 $color-navtxt: whitesmoke;
-$h-navbar: 63px;
+$h-navbar: 60px;
+$color-bodybg: rgb(168, 168, 170);
 $w-navbar: 100%;
 $color-brand: #9524eb;
 $font-brand: Old English Text MT;
 $font-size-brand: 30px;
 $w-navbar-item: 90px;
 $h-navbar-item: 35px;
-$color-hover: rgb(36, 248, 54);
+$color-hover: rgb(249, 250, 249);
 //$font-navbar-item: MingLiu_HKSCS;
 $font-navbar-item: 'Tahoma';
 $color-navbar-item-active: #004B00;
@@ -17,6 +18,7 @@ $font-title: Georgia;
 $font-body: Georgia;
 $font-play: Matura MT Script Capitals Regular;
 $color-play: #01FF01;
+$color_idbg: rgb(16, 16, 119);
 
 //search
 $w-search: 70px;

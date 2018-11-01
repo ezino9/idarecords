@@ -11,7 +11,7 @@ html {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     padding-top: 0px;
-    background-color: rgb(198, 216, 216);
+    background-color:$color-bodybg;
 
   }
   .footer {
@@ -38,8 +38,9 @@ nav.navbar{
     color: $color-brand !important;
     font-family: $font-brand;
     font-size: $font-size-brand;
-    padding-left: 30px;
-    padding-right: 90px;
+    padding-top: 0px;
+    padding-left: 60px;
+    padding-right: 0px;
 }
 
 //navbar-items
@@ -88,16 +89,16 @@ footer{
     clear: both;
 }
 #login{
-    padding-top: 20px;
-    padding-right: 20px;
-}
-#login {
-    color: rgb(139, 139, 253);
-    font-size: 18px;
+    padding-top: 30px;
+    padding-right: 30px;
+    color: $color-navtxt;
+    font-size: 14px;
+    padding-bottom: 1px;
 }
 a#login:hover{
     color: $color-hover!important;
     text-decoration: none;
+    border-bottom: $color-navtxt solid 1px;
 }
 
 //li uplaod(add new)
@@ -106,6 +107,7 @@ nav .uplaod{
     height: $h-navbar-item;
     //background-color: transparent!important;
 }
+
 //dropdown menu
 .navbar .dropdown{
     width: $w-navbar-item;
@@ -168,7 +170,6 @@ nav .uplaod{
 	background-color: transparent;
 }
 
-
 //media query
 @media (max-width: 990px) {
     .navbar-header {
@@ -176,6 +177,14 @@ nav .uplaod{
     }
     .navbar-left,.navbar-right {
         float: none !important;
+    }
+    nav.navbar a.navbar-brand{
+        position: fixed;
+        margin-right: 50px;
+    }
+    form.form-inline .form-group{
+        display: inline-block !important;
+        background-color: $color-brand !important;
     }
     .navbar-toggle {
         display: block;
@@ -209,3 +218,64 @@ nav .uplaod{
         display:block !important;
     }
 }
+
+.form-control{
+    border-radius: 0px;
+    margin-right: 0px !important;
+    padding-right: 0px;
+}
+
+.form-inline .form-control{
+    border-radius: 0px;
+    border: $color-nav solid 1px;
+    margin-right: 0px !important;
+    padding-right: 0px;
+}
+.form-inline .btn-success{
+    margin-left: 0px;
+    clear: both;
+}
+//buttons style
+.btn{
+    border: 0px;
+    border-radius: 0px;
+}
+.btn:hover{
+    border: 0px;
+    border-radius: 0px;
+    opacity: 0.9;
+}
+.btn-success{
+    background-color: $color-nav !important;
+    color: $color-navtxt;
+    border: 0px;
+    border-radius: 0px;
+}
+.btn-success:hover{
+    background-color: $color-navtxt !important;
+    color: $color-nav;
+    border: 0px;
+    border-radius: 0px;
+}
+
+//panel
+.panel-heading{
+    background-color: $color-nav !important;
+    color: $color-navtxt !important;
+    border: 0px;
+    border-radius: 0px;
+}
+.panel{
+    border: 0px !important;
+    border-radius: 0px;
+}
+
+.ytb_link{
+    background-color: $color-idbg !important;
+    color: $color-navtxt;
+
+}
+.ytb_id{
+    background-color: red
+}
+

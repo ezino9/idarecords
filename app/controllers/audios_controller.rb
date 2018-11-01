@@ -41,6 +41,9 @@ class AudiosController < ApplicationController
 
   def show
     @audio = Audio.find(params[:id])
+    if @audio
+      @artists = Audio.where("artist = ?", @audio.artist).page(params[:page]).per(5)
+    end
   end
 
   def destroy

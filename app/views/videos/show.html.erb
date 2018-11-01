@@ -1,4 +1,3 @@
-<i class="glyphicon glyphicon-film" ></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-film"></i>
 <h2 class="page-header" text-center><i class="glyphicon glyphicon-film"></i> <%= @video.song_title%> <i class="glyphicon glyphicon-film"></i>
   <% if current_user%>
     <% if @video.user_id == current_user.id%>
@@ -54,7 +53,7 @@
                                 <li><strong>Artist: </strong><%= song.singer_name %></li>
                                 <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
                                 
-                                <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                                <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-block btn-success' %> 
                         </div>
                     </div> 
                 </div>
@@ -66,7 +65,25 @@
         <% end %>
     </div>
     <div class="col-md-2">
-       
+       <div class="same-author">
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    <h3 class="glyphicon glyphicon-list"> Related</h3>
+                </div>
+                <% if @artists.exists? %>
+                    <% @artists.each do |artist| %>
+                        <div class="panel-body">
+                            <%= link_to artist.song_title, video_path(artist) %> 
+                        </div>
+                        <div class="panel panel-footer" style="background-color: rgb(168, 168, 170);">
+                            
+                        </div>  
+                    <% end %>
+                <% else %>
+                <p>No song with the same artist found!!</p>
+                <% end %>
+            </div>
+        </div>  
     </div>
 </div>
 

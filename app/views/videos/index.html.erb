@@ -1,4 +1,3 @@
-<i class="glyphicon glyphicon-film"></i><i class="glyphicon glyphicon-music"></i><i class="glyphicon glyphicon-film"></i>
 <h2 class="page-header"><i class="glyphicon glyphicon-film"></i> Here you get your favorate videos <i class="glyphicon glyphicon-film"></i>
   <% if current_user%>
     <%= link_to  "Upload ", new_video_path, class:'btn btn-info pull-right' %>
@@ -21,7 +20,7 @@
                                     <li><strong>Artist: </strong><%= song.singer_name %></li>
                                     <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
                                     
-                                    <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-success' %> <%= link_to  "..Related songs...", type_path(:id => song.type_id), class:'btn btn-default readMore' %>
+                                    <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-block btn-success' %>
                             </div>
                         </div> 
                     </div>

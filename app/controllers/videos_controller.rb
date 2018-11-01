@@ -41,6 +41,9 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    if @video
+      @artists = Video.where("singer_name = ?", @video.singer_name).page(params[:page]).per(5)
+    end
   end
 
   def destroy
