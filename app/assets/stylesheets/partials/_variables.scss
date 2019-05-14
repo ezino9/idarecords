@@ -1,17 +1,22 @@
-//Nav colors and styles
-$color-nav: #1B1437;
-$color-navtxt: whitesmoke;
-$h-navbar: 60px;
-$color-bodybg: rgb(168, 168, 170);
+
+//$color-nav: #193441;
+$color-nav: #ffffff;
+$color-navtxt: rgb(0, 0, 0);
+$h-navbar: 40px;
+$color-footerborder: #dedede;
+$color-navborder: #ebebeb;
+//$color-bodybg: rgb(168, 168, 170);
+$color-bodybg: #fff;
 $w-navbar: 100%;
 $color-brand: #9524eb;
 $font-brand: Old English Text MT;
-$font-size-brand: 30px;
-$w-navbar-item: 90px;
-$h-navbar-item: 35px;
-$color-hover: rgb(249, 250, 249);
-//$font-navbar-item: MingLiu_HKSCS;
-$font-navbar-item: 'Tahoma';
+$font-size-brand: 100%;
+$w-navbar-item: 70px; 
+$h-navbar-item: 30px;
+//$color-hover: rgb(111, 112, 108);
+$color-hover: rgb(102, 7, 7);
+//$font-navbar-item: Fultiger;
+$font-navbar-item: Sans-serif;
 $color-navbar-item-active: #004B00;
 $font-size-navbar-item: 14px;
 $font-title: Georgia;
@@ -25,7 +30,24 @@ $w-search: 70px;
 $h-search: 32px;
 
 //footer
-$font-footer: Comic Sans;
+$font-footer: "Comic Sans";
 $font-size-footer: 14px;
-$h-footer: 35px;
+$h-footer: 55px;
 $w-footer: 100%;
+
+
+// panel
+//$color-heading: #3E606F;
+$color-heading: rgba(255, 0, 0, 0.603);
+
+
+//btn color
+
+//$color-btn: rgb(3, 87, 129);
+$color-btnhover: rgba(255, 0, 0, 0.603);
+
+//$color-btnhover:#3E606F;
+$color-btn:rgb(131, 2, 2);
+
+//$color-abouthover: rgb(111, 112, 108);
+$color-abouthover: rgb(189, 69, 69);

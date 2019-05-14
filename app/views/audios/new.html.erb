@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-       <h2 class="page-header"><span class="glyphicon glyphicon-upload"></span> Upload New <span id="header">Audio <i class="glyphicon glyphicon-music"></i></span></h2>
+       <h2 class="">
+        <div class="recent-upload">
+            <h4><span class="glyphicon glyphicon-upload"></span>&nbsp;UPLOAD NEW <span id="header">AUDIO</span></h4>
+        </div>
+        </h2>
        <%= form_for( @audio ) do |f| %>
        <% if @audio.errors%>
         <% @audio.errors.full_messages.each do |msg|%>
@@ -38,7 +42,7 @@
        </div>
        <div class="form-group">
         <%= f.submit 'Publish', class:'btn btn-primary'%>
-        <%= link_to  "Cancel", root_path, class:'btn btn-default' %>
+        <%= link_to  "Cancel", audios_path, class:'btn btn-default' %>
        </div>
        <% end %>
     </div>

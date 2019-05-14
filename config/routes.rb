@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'services/index'
+  get 'services/show'
+  get 'about/index'
+  mount Ckeditor::Engine => '/ckeditor'
   get 'types/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  mount Ckeditor::Engine => '/ckeditor'
   get 'comments/new'
   get 'categories/new'
   get 'categories/create'
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
   get 'about' => 'about#index', :as => 'about'
   get 'home' => 'home#index', as: 'home'
 
-  resources :contacts, :audios, :videos, :posts, :categories, :comments
+  resources :contacts, :audios, :videos, :posts, :categories, :comments, :services
   resources :types, only: [:show]
 
   resources :posts do

@@ -14,82 +14,85 @@ html {
     background-color:$color-bodybg;
 
   }
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    //height: 60px;
-    padding: 10px;
-    color: $color-navtxt !important;
-    background-color: $color-nav!important;
-  }
 //navbar
 nav{
     background-color: $color-nav !important;
     height: $h-navbar;
+    border-bottom: 2px solid $color-navborder !important;
 }
-nav.navbar{
-    border: 0px;
-}
-
 //navbar-brand
 .navbar-brand{
-    color: $color-brand !important;
-    font-family: $font-brand;
-    font-size: $font-size-brand;
-    padding-top: 0px;
+    padding-top: 5px;
+    //width: $font-size-brand;
     padding-left: 60px;
     padding-right: 0px;
 }
 
 //navbar-items
 .nav li{
-    width: $w-navbar-item;
     height: $h-navbar-item;
     position: relative;
-    margin: 1px;
-    margin-top: 7px;
+
 }
 .nav li a{
     font-family: $font-navbar-item;
     font-size: $font-size-navbar-item;
     color: $color-navtxt !important;
     font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 2px;
 }
 .navbar-default .navbar-nav > .active > a{
 	background: $color-nav!important;
     text-decoration: none;
-    border-bottom: $color-navtxt solid 3px;
+    padding-bottom: 0px;
+    color: $color-hover!important;
 }
 nav ul > li a:hover{
-	//background: $color-navbar-item-active!important;
     text-decoration: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     color: $color-hover!important;
-    border-bottom: $color-hover solid 3px;
 }
-
 //container
 #container{
     padding-top: 6em;
 }
-
+h3.text-center{
+    
+    span{
+        color: $color-btn;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+    }
+}
+.recent-upload{
+    background: $color-btn !important;
+    text-align: center;
+    height: 40px;
+    h4, h3{
+        padding: 10px;
+        color: $color-nav;
+        font-weight: bold;
+    }
+}
 
 //footer
 footer{
     height: $h-footer;
-    background-color: $color-nav !important;
+    background-color: $color-navborder !important;
     text-align: center;
     color: $color-navtxt !important;
     font-family: $font-footer;
     font-size: $font-size-navbar-item;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    padding-top: 8px;
-    clear: both;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    border-top: #dcdcdc solid 2px;
 }
 #login{
-    padding-top: 30px;
+    padding-top: 20px;
     padding-right: 30px;
     color: $color-navtxt;
     font-size: 14px;
@@ -98,7 +101,8 @@ footer{
 a#login:hover{
     color: $color-hover!important;
     text-decoration: none;
-    border-bottom: $color-navtxt solid 1px;
+    padding-bottom: 5px;
+   //border-bottom: $color-navtxt solid 2px;
 }
 
 //li uplaod(add new)
@@ -109,42 +113,7 @@ nav .uplaod{
 }
 
 //dropdown menu
-.navbar .dropdown{
-    width: $w-navbar-item;
-    -webkit-transform: none;
-	-ms-transform: none;
-    transform: none;
-    margin-top: 15px;
-    padding-bottom: 0px;
-}
-.navbar .dropdown #upload:hover{
-    background: none!important;
-    width: $w-navbar-item;
-    -webkit-transform: none;
-	-ms-transform: none;
-    transform: none;
-}
-.navbar .dropdown .dropdown-menu{
-    width: $w-navbar-item;
-    -webkit-transform: none;
-	-ms-transform: none;
-    transform: none;
-    margin-top: 10px;
-    border: none;
-    background: transparent!important;
-}
-.navbar .dropdown li{
-    margin-top: 0px;
-    width: $w-navbar-item;
-    -webkit-transform: none;
-	-ms-transform: none;
-    transform: none; 
-}
-.navbar .dropdown li a{
-    width: $w-navbar-item;
-    background-color: $color-nav!important;
-    color: $color-nav;
-}
+
 
 //customize index both for audio and video
 .panel-body, .panel-footer li{
@@ -218,7 +187,6 @@ nav .uplaod{
         display:block !important;
     }
 }
-
 .form-control{
     border-radius: 0px;
     margin-right: 0px !important;
@@ -227,9 +195,14 @@ nav .uplaod{
 
 .form-inline .form-control{
     border-radius: 0px;
-    border: $color-nav solid 1px;
+    border: $color-navtxt solid 1px;
     margin-right: 0px !important;
     padding-right: 0px;
+    color: $color-navtxt;
+    &:focus{
+        border: $color-btnhover solid 1px;
+        box-shadow: none;
+    }
 }
 .form-inline .btn-success{
     margin-left: 0px;
@@ -244,38 +217,168 @@ nav .uplaod{
     border: 0px;
     border-radius: 0px;
     opacity: 0.9;
+    background-color: $color-btnhover !important;
 }
 .btn-success{
-    background-color: $color-nav !important;
+    background-color: $color-btnhover !important;
     color: $color-navtxt;
     border: 0px;
     border-radius: 0px;
 }
-.btn-success:hover{
-    background-color: $color-navtxt !important;
-    color: $color-nav;
+.btn-success:hover, a.btn-success:hover{
+    background-color: $color-btn !important;
     border: 0px;
+    color: $color-nav !important;
     border-radius: 0px;
 }
 
 //panel
 .panel-heading{
-    background-color: $color-nav !important;
-    color: $color-navtxt !important;
+    //background-color: $color-nav !important;
+    background-color: $color-btn !important;
+    color: $color-nav !important;
     border: 0px;
     border-radius: 0px;
+    font-weight: bold;
+}
+.panel a{
+    color: $color-navtxt;
+    text-decoration: none;
+    &:hover{
+        color: $color-btnhover;
+    }
 }
 .panel{
     border: 0px !important;
     border-radius: 0px;
+    box-shadow: 0 2px 2px $color-navborder;
+}
+.panel .panel-default img{
+    height: 200px;
+}
+.panel-default h3{
+    color: $color-navtxt;
+    text-transform: uppercase;
+    &:hover{
+        color: $color-abouthover;
+    }
+}
+.panel-default #post-index{
+    height: 300px;
+    padding: 0 8px;
 }
 
 .ytb_link{
     background-color: $color-idbg !important;
-    color: $color-navtxt;
+    color: $color-nav;
 
 }
 .ytb_id{
     background-color: red
 }
 
+#category li{
+    border: 2px solid $color-nav !important;
+    border-radius: 0px;
+    background-color: $color-nav !important;
+}
+#category li a{
+    color: $color-navtxt;
+    padding: 5px;
+    border: 1px solid $color-nav !important;
+}
+#category li a:hover{
+   // color: $color-navtxt;
+    text-decoration: none;
+    border: 1px solid $color-btn !important;
+    background-color: $color-nav !important;
+}
+
+.about{
+    background-color: $color-nav !important;
+    padding-bottom: 10px;
+    width: 80%;
+    text-align: center;
+    //border: 2px solid $color-abouthover;
+    box-shadow: 0 2px 2px $color-navborder;
+}
+// additional style panels
+ .about .about-body .glyphicon{
+    background-color: $color-nav!important;
+    width: 100px;
+    height: 100px;
+    padding: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+    color: $color-navtxt;
+}
+
+.about .about-body .glyphicon:hover{
+    background-color: $color-abouthover!important;
+    width: 100px;
+    height: 100px;
+    padding: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+    color: $color-nav !important;
+}
+
+// home coursel image
+.item image{
+    height: 100px;
+    width: 100px;
+}
+
+.item .carousel-caption h3{
+    font-size: 34px;
+    font-family: 'Gill Sans';
+    text-align: center;
+    //color: blue;
+    //opacity: 0.7;
+    //padding-bottom: 60px;
+}
+.item .carousel-caption p{
+    font-size: 14px;
+    //opacity: 0.7;
+    //color: blue;
+    font-family: 'Gill Sans';
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+//home panel
+.home{
+    box-shadow: 1px 2px 2px $color-navborder;
+}
+.home .home-body{
+    background-color: $color-nav !important;
+    color: $color-navtxt;
+}
+hr{
+    background-color: $color-bodybg !important;
+}
+.home .home-body .glyphicon{
+    background-color: $color-nav!important;
+    width: 100px;
+    height: 100px;
+    padding: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+    color: $color-navtxt;
+}
+
+.home .home-body .glyphicon:hover, 
+.home .home-body a.glyphicon:hover{
+    background-color: $color-hover!important;
+    width: 100px;
+    height: 100px;
+    padding: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+    color: $color-navtxt;
+}
+
+.home-link:hover, .home-link, h2:hover{
+    text-decoration: none;
+    color: $color-hover !important;
+}

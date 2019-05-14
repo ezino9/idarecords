@@ -1,4 +1,4 @@
-<h2 class="page-header" text-center><i class="glyphicon glyphicon-film"></i> <%= @video.song_title%> <i class="glyphicon glyphicon-film"></i>
+<h2 class="page-header">
   <% if current_user%>
     <% if @video.user_id == current_user.id%>
         <%= link_to  "Edit ", edit_video_path(@video), class:'btn btn-info pull-right' %>
@@ -15,22 +15,28 @@
                 <%else%>
                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'40%' %>
                 <% end %>
-                
-            </div>
-            <div class="panel panel-footer">
-               <li><strong>Category: </strong><%= link_to  @video.type.name, type_path(@video) %></li>
-               <li><strong>Song name: </strong><%= @video.song_title%></li>
-                <li><strong>Artist: </strong><%= @video.singer_name%></li>
-                <li><strong>Upload by: </strong><%= @video.user.name %></li>
-                <li><strong>Upload on:</strong><%= @video.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)') %></li>  
+                <div class="panel panel-footer">
+                <li><strong>Category: </strong><%= link_to  @video.type.name, type_path(@video.type.id) %></li>
+                <li><strong>Song name: </strong><%= @video.song_title%></li>
+                    <li><strong>Artist: </strong><%= @video.singer_name%></li>
+                    <li><strong>Upload by: </strong><%= @video.user.name %></li>
+                    <li><strong>Upload on:</strong><%= @video.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)') %></li>  
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" id="category">
         <% if @types.exists%>
-          <% @types.each do |type|%>
-                <li class="list-group-item"><%= link_to type.name, type_path(type), class:'glyphicon glyphicon-film'  %></li>
-          <%end%>
+            <div class="panel panel-nfio">
+                <div class="panel panel-heading">
+                    <h4 >Category</h4>
+                </div>
+                <div class="panel panel-body">
+                   <% @types.each do |type|%>
+                        <li class="list-group-item"><%= link_to type.name, type_path(type), class:'glyphicon glyphicon-film'  %></li>
+                    <%end%> 
+                </div>
+            </div>
         <%else%>
         <p>No categories found</p>
         <%end%>
@@ -39,27 +45,30 @@
 <div class="row">
     <div class="col-md-10">
        <%if @videos.exists? %>
-                <div class="row">
-                <% @videos.each do |song|%>
-                    <div class="col-md-4">
-                    <div class="panel panel-info">
-                        <div class="panel-body">
-                            <%if song.youtube_link.present?%>
-                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            <%else%>
-                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
-                            <% end %>
-                                <li><strong>Song name: </strong><%= song.song_title%></li>
-                                <li><strong>Artist: </strong><%= song.singer_name %></li>
-                                <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
-                                
-                                <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-block btn-success' %> 
-                        </div>
-                    </div> 
-                </div>
-                <% end %>
-        <!-- pagination -->
-            </div>          
+            <div class="recent-upload">
+                <h4>RECENT UPLOADED VIDEOS FROM OUR CHANNEL</h4>
+           </div>
+            <div class="row">
+            <% @videos.each do |song|%>
+                <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <%if song.youtube_link.present?%>
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <%else%>
+                            <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                        <% end %>
+                            <li><strong>Song name: </strong><%= song.song_title%></li>
+                            <li><strong>Artist: </strong><%= song.singer_name %></li>
+                            <li><strong>Upload on:</strong><%= song.created_at.to_time.strftime('%b %e, %Y ') %></li>
+                            
+                            <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-block btn-success' %> 
+                    </div>
+                </div> 
+            </div>
+            <% end %>
+    <!-- pagination -->
+        </div>          
         <%else%>
             <p>No song published yet</p>
         <% end %>
@@ -68,22 +77,25 @@
        <div class="same-author">
             <div class="panel panel-info">
                 <div class="panel panel-heading">
-                    <h3 class="glyphicon glyphicon-list"> Related</h3>
+                    <h4 > Related videos</h4>
                 </div>
                 <% if @artists.exists? %>
-                    <% @artists.each do |artist| %>
+                    <% @artists.each do |song| %>
                         <div class="panel-body">
-                            <%= link_to artist.song_title, video_path(artist) %> 
-                        </div>
-                        <div class="panel panel-footer" style="background-color: rgb(168, 168, 170);">
-                            
-                        </div>  
+                            <%if song.youtube_link.present?%>
+                            <iframe width="100%" height="100" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <%else%>
+                                <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
+                            <% end %>
+                                <li><strong>Title: </strong><%= song.song_title%></li>                                
+                                <%= link_to  "View", video_path(song), class:'glyphicon glyphicon-ok btn btn-block btn-success' %> 
+                        </div> 
                     <% end %>
                 <% else %>
                 <p>No song with the same artist found!!</p>
                 <% end %>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 

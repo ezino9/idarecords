@@ -23,5 +23,9 @@ class ApplicationController < ActionController::Base
     logger.error exception.message
     render plain: '404 Not found', status: 404 
   end
+  protected 
+  def get_services
+    @services = Service.all
+  end
 
 end

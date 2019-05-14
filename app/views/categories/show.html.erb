@@ -9,11 +9,11 @@
                       <div class="panel panel-heading">
                          <%= link_to  post.title, post_path(post) %> 
                       </div>
-                      <div class="panel panel-body">
+                      <div class="panel panel-body" id="post-index">
                           <% if post.coverpicture.present? %>
                             <%= image_tag  "#{post.coverpicture}", width:'100%' %>
                           <% else %>
-                            <%= image_tag  "img/image2.jpg" %>
+                            <%= image_tag  "img/image2.jpg", width:'100%' %>
                           <% end %><br/>
                           <%= raw post.body.truncate(100)%>
                           <p><strong>Posted on: </strong><%= post.created_at.to_time.strftime('%b %e, %Y')%></p>
@@ -34,6 +34,3 @@
    <div class="col-md-2">
    </div> 
 </div>
-
-
-

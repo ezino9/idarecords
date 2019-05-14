@@ -3,28 +3,19 @@
   <!-- carousel sleder -->
   <div class="carousel slide" id="my-carousel" data-ride="carousel">
       <div class="carousel-inner">
-          <div class="item active">
+          <div class="item active text-center">
              <%= image_tag  "img/image1.jpg", width:'100%', height:'25%' %>
              <div class="carousel-caption">
-                 <h3>Look AT OUR PRODUCTION TOOLS</h3>
-                 <p>Enjoy working with us, we have lattest audios, videos and blog if you want to be one of our bloggers contact us
+                 <h3>LOOK AT OUR PRODUCTION TOOLS</h3>
+                 <p>Enjoy working with us. If you are an artist of group of artists fell free to contact us. We have also lattest audios, videos and blogs from our clients,  if you want to be one of our bloggers send us your a message
                     <%= link_to  "Contact Us", contact_path, class:'btn btn-success' %>
                   </p>
              </div> 
           </div> <!-- first item -->
           <div class="item">
-             <%= image_tag  "img/image2.jpg", width:'100%', height:'25%' %>
-             <div class="carousel-caption">
-                 <h3>This is real awesome record</h3>
-                 <p>Enjoy working with us, we have lattest audios, videos and blog if you want to be one of our bloggers contact us
-                    <%= link_to  "Contact Us", contact_path, class:'btn btn-success' %>
-                  </p>
-             </div> 
-          </div> <!-- second item -->
-          <div class="item">
              <%= image_tag  "img/image3.jpg", width:'100%', height:'25%' %>
-             <div class="carousel-caption">
-                 <h3>This is real awesome record</h3>
+             <div class="carousel-caption text-center">
+                 <h3>LOOK AT OUR MIXERS AND OTHER TOOLS</h3>
                  <p>Enjoy working with us, we have lattest audios, videos and blog if you want to be one of our bloggers contact us
                     <%= link_to  "Contact Us", contact_path, class:'btn btn-success' %>
                   </p>
@@ -36,11 +27,13 @@
 <br>
 <div class="row">
     <div class="col-md-4">
-        <div class="panel panel-success">
-            <div class="panel panel-heading">
-                <h2> <i class="glyphicon glyphicon-music"> Audio</i></h2>
-            </div>
-            <div class="panel-body">
+        <div class="home">
+            <div class="home-body text-center">
+               <%= link_to audios_path, class:'home-link' do%>
+                    <i class="glyphicon glyphicon-music"></i>
+                    <h2 class="home-h2">  Audio</h2>
+                <% end %>
+                 <hr>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 
                 1500s, when an unknown printer took a galley of type and scrambled it to make 
@@ -53,11 +46,13 @@
         </div>
     </div>
     <div class="col-md-4">
-       <div class="panel panel-info">
-            <div class="panel panel-heading">
-                <h2> <i class="glyphicon glyphicon-film"> Video</i></h2>
-            </div>
-            <div class="panel-body">
+       <div class="home">
+            <div class="home-body text-center">
+               <%= link_to videos_path, class:'home-link' do%>
+                 <i class="glyphicon glyphicon-film"></i>
+                 <h2 class="home-h2"> Video</h2>
+              <% end%>
+                <hr>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 
                 1500s, when an unknown printer took a galley of type and scrambled it to make 
@@ -70,11 +65,13 @@
         </div>
     </div>
     <div class="col-md-4">
-       <div class="panel panel-warning">
-            <div class="panel panel-heading">
-                <h2> <i class="glyphicon glyphicon-comment"> Blog</i></h2>
-            </div>
-            <div class="panel-body">
+       <div class="home">
+            <div class="home-body text-center">
+               <%= link_to posts_path, class:'home-link' do%>
+                 <i class="glyphicon glyphicon-comment"></i>
+                <h2> Blog</h2>
+                <% end %>
+                <hr>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 
                 1500s, when an unknown printer took a galley of type and scrambled it to make 

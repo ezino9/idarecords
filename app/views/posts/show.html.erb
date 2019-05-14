@@ -3,8 +3,9 @@
         
     </div>
     <div class="col-md-10">
-      
-        <h2 class=page-header><%= @post.title%></h2>
+        <div class="recent-upload">
+            <h4><%= @post.title%></h4>
+        </div>
         <div class="thumbnail">
            <%if @post.coverpicture.present?%>
            <%= image_tag  "#{@post.coverpicture}", width:'100%' %>
@@ -16,7 +17,7 @@
             <%= raw @post.body %>
         </div>
         <div class="">
-            <p><strong>Category: </strong><%= link_to  @post.category.name, category_path(@post) %></p>
+            <p><strong>Category: </strong><%= link_to  @post.category.name, category_path(@post.category_id) %></p>
             <p><strong>Posted by: </strong><%= @post.user.name%></p>
             <p><strong>Posted on: </strong><%= @post.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)')%></p>
         </div>
