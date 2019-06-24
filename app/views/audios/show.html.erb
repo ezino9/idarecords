@@ -1,12 +1,13 @@
 <% if current_user%>
     <% if @audio.user_id == current_user.id %>
-        <%= link_to  "Update Audio ", edit_audio_path(@audio), class:'btn btn-info pull-right' %>
+        <%= link_to  "Update Audio ", edit_audio_path(@audio), class:'btn btn-info' %>
     <% end %>
 <% end %>
 
-<h3 class="text-center"><%= @audio.title%> by <span><%= @audio.artist%></span></h4>
+
 <div class="row">
     <div class="col-md-10">
+        <h3 class="text-center"><%= @audio.title%> by <span><%= @audio.artist%></span></h3>
         <div class="panel panel-default"  id="playSong">
             
         </div>
@@ -99,6 +100,13 @@
                 <% end%>
                 <% end%>
                 
+            </div>
+            <div class="panel panel-footer">
+                <li><strong>Category: </strong><%= link_to  @audio.type.name, type_path(@audio.type.id) %></li>
+                <li><strong>Song name: </strong><%= @audio.title%></li>
+                <li><strong>Artist: </strong><%= @audio.artist%></li>
+                <li><strong>Upload by: </strong><%= @audio.user.name %></li>
+                <li><strong>Upload on:</strong><%= @audio.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)') %></li>  
             </div>
             `);
        

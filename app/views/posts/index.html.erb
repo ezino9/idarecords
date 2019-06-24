@@ -1,6 +1,6 @@
 <h2 class="page-header">
   <% if current_user%>
-    <%= link_to  "Add post ", new_post_path, class:'btn btn-info pull-right' %>
+    <%= link_to  "Add post ", new_post_path, class:'btn btn-info' %>
   <% end %>
 </h2>
 
@@ -16,7 +16,7 @@
                   <div class="panel panel-default" >
                     <div class="panel panel-doby" id="post-index">
                       <%= link_to post_path(post) do %>
-                          <h3><%=  raw post.title.truncate(50) %></h3>
+                          <h5><%=  raw post.title.truncate(50) %></h5>
                           <% if post.coverpicture.present? %>
                             <%= image_tag  "#{post.coverpicture}", width:'100%', height:'140px' %>
                           <% else %>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="panel panel-body">
                    <% @categories.each do |category|%>
-                        <li class="list-group-item"><%= link_to category.name, type_path(category), class:'glyphicon glyphicon-film'  %></li>
+                        <li class="list-group-item"><%= link_to category.name, category_path(category), class:'glyphicon glyphicon-film'  %></li>
                     <%end%> 
                 </div>
             </div>

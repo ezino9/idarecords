@@ -1,17 +1,20 @@
-<h2 class="page-header"><%= @type.name %></h2>
+
+<div class="recent-upload text-center">
+    <h4><%= @type.name %></h4>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <% if @audios.exists? %>
-                <h3 class="page-header"> Related Audios</h3>
+                <h3 class="page-header"> RELATED AUDIOS</h3>
                   <% @audios.each do |song|%>
-                     <div class="col-md-8">
+                     <div class="col-md-6">
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.coverpicture.present?%>
-                                    <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'200px', height:'180px' %>
+                                    <%= image_tag  "#{song.coverpicture}", class:'thumbnail', width:'220px', height:'180px' %>
                                 <%else%>
-                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'200px', height:'180px' %>
+                                    <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'220px', height:'180px' %>
                                 <% end %>
                                     <li><strong>Song name: </strong><%= song.title%></li>
                                     <li><strong>Artist: </strong><%= song.artist %></li>
@@ -30,14 +33,14 @@
         </div><!-- End of Audios by type -->
         <div class="col-md-6">
           <%if @videos.exists? %>
-                <h3 class="page-header"> Related Videos</h3>                
+                <h3 class="page-header"> RELATED VIDEOS</h3>                
                   <% @videos.each do |song|%>
-                     <div class="col-md-8">
+                     <div class="col-md-6">
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 <%if song.youtube_link.present?%>
                                 
-                               <iframe width="250" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                               <iframe width="230" height="200" src="https://www.youtube.com/embed/<%= song.youtube_link %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <%else%>
                                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'30%' %>
                                 <% end %>

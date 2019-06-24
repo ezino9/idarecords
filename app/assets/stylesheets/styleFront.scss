@@ -11,6 +11,7 @@ html {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     padding-top: 0px;
+    font-family: 'Fjalla One','Old Standard TT',Arial, Helvetica, Oswald;
     background-color:$color-bodybg;
 
   }
@@ -38,21 +39,25 @@ nav{
     font-family: $font-navbar-item;
     font-size: $font-size-navbar-item;
     color: $color-navtxt !important;
-    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 2px;
+    border-bottom: 2px $color-nav solid;
     text-transform: uppercase;
-    padding-bottom: 2px;
+    padding-bottom: 0px;
 }
 .navbar-default .navbar-nav > .active > a{
 	background: $color-nav!important;
     text-decoration: none;
     padding-bottom: 0px;
-    color: $color-hover!important;
+    border-bottom: 2px $color-hover solid;
+    //color: $color-hover!important;
 }
 nav ul > li a:hover{
     text-decoration: none;
     padding-bottom: 0px;
+    border-bottom: 2px $color-hover solid;
     margin-bottom: 0px;
-    color: $color-hover!important;
+    //color: $color-hover!important;
 }
 //container
 #container{
@@ -92,17 +97,19 @@ footer{
     border-top: #dcdcdc solid 2px;
 }
 #login{
-    padding-top: 20px;
-    padding-right: 30px;
-    color: $color-navtxt;
+    padding-top: 15px;
+    margin-right: 30px;
     font-size: 14px;
-    padding-bottom: 1px;
+    font-family: $font-navbar-item;
+    font-size: $font-size-navbar-item;
+    color: $color-navtxt !important;
+    border-bottom: 2px $color-nav solid;
+    //text-transform: uppercase;
 }
 a#login:hover{
-    color: $color-hover!important;
     text-decoration: none;
     padding-bottom: 5px;
-   //border-bottom: $color-navtxt solid 2px;
+   border-bottom: $color-hover solid 2px;
 }
 
 //li uplaod(add new)
@@ -118,25 +125,6 @@ nav .uplaod{
 //customize index both for audio and video
 .panel-body, .panel-footer li{
     list-style: none;
-}
-
-
-#overlay{
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	background-color: rgb(35, 99, 93);
-	margin: -0.1%;
-
-}
-
-#overlay img{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20%;
-
-	background-color: transparent;
 }
 
 //media query
@@ -200,7 +188,7 @@ nav .uplaod{
     padding-right: 0px;
     color: $color-navtxt;
     &:focus{
-        border: $color-btnhover solid 1px;
+        border: $color-btn solid 1px;
         box-shadow: none;
     }
 }
@@ -217,21 +205,23 @@ nav .uplaod{
     border: 0px;
     border-radius: 0px;
     opacity: 0.9;
-    background-color: $color-btnhover !important;
+    background-color: $color-btn !important;
 }
 .btn-success{
     background-color: $color-btnhover !important;
     color: $color-navtxt;
-    border: 0px;
+    border: 2px solid $color-btn;
     border-radius: 0px;
 }
 .btn-success:hover, a.btn-success:hover{
     background-color: $color-btn !important;
-    border: 0px;
+    border: 2px solid $color-btn;
     color: $color-nav !important;
     border-radius: 0px;
 }
-
+.btn-success.home-btn{
+    background-color: transparent !important;
+}
 //panel
 .panel-heading{
     //background-color: $color-nav !important;
@@ -245,7 +235,7 @@ nav .uplaod{
     color: $color-navtxt;
     text-decoration: none;
     &:hover{
-        color: $color-btnhover;
+        color: $color-btn;
     }
 }
 .panel{
@@ -260,7 +250,7 @@ nav .uplaod{
     color: $color-navtxt;
     text-transform: uppercase;
     &:hover{
-        color: $color-abouthover;
+        color: $color-btn;
     }
 }
 .panel-default #post-index{
@@ -299,7 +289,6 @@ nav .uplaod{
     padding-bottom: 10px;
     width: 80%;
     text-align: center;
-    //border: 2px solid $color-abouthover;
     box-shadow: 0 2px 2px $color-navborder;
 }
 // additional style panels
@@ -314,7 +303,7 @@ nav .uplaod{
 }
 
 .about .about-body .glyphicon:hover{
-    background-color: $color-abouthover!important;
+    background-color: $color-btn!important;
     width: 100px;
     height: 100px;
     padding: 40px;
@@ -381,4 +370,16 @@ hr{
 .home-link:hover, .home-link, h2:hover{
     text-decoration: none;
     color: $color-hover !important;
+}
+
+// post show
+.post-footer, .add-comments{
+    a{
+        color:black;
+        &:hover{
+            color: $color-hover;
+            text-decoration: none;
+        }
+
+    }
 }

@@ -1,7 +1,7 @@
 <h2 class="page-header">
   <% if current_user%>
     <% if @video.user_id == current_user.id%>
-        <%= link_to  "Edit ", edit_video_path(@video), class:'btn btn-info pull-right' %>
+        <%= link_to  "Edit ", edit_video_path(@video), class:'btn btn-info' %>
     <% end %>
  <% end %>
 </h2>
@@ -16,8 +16,8 @@
                     <%= image_tag  "img/image2.jpg", class:'thumbnail', width:'40%' %>
                 <% end %>
                 <div class="panel panel-footer">
-                <li><strong>Category: </strong><%= link_to  @video.type.name, type_path(@video.type.id) %></li>
-                <li><strong>Song name: </strong><%= @video.song_title%></li>
+                    <li><strong>Category: </strong><%= link_to  @video.type.name, type_path(@video.type.id) %></li>
+                    <li><strong>Song name: </strong><%= @video.song_title%></li>
                     <li><strong>Artist: </strong><%= @video.singer_name%></li>
                     <li><strong>Upload by: </strong><%= @video.user.name %></li>
                     <li><strong>Upload on:</strong><%= @video.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)') %></li>  

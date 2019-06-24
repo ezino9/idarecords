@@ -16,14 +16,14 @@
         <div class="content">
             <%= raw @post.body %>
         </div>
-        <div class="">
+        <div class="post-footer ">
             <p><strong>Category: </strong><%= link_to  @post.category.name, category_path(@post.category_id) %></p>
             <p><strong>Posted by: </strong><%= @post.user.name%></p>
             <p><strong>Posted on: </strong><%= @post.created_at.to_time.strftime('%A (%b %e, %Y at %H : %M %p)')%></p>
         </div>
         <% if current_user%>
         <% if @post.user_id == current_user.id%>
-            <%= link_to  "Edit post ", edit_post_path(@post), class:'btn btn-info pull-right' %>
+            <%= link_to  "Edit post ", edit_post_path(@post), class:'btn btn-info' %>
         <% end %>
         <% end %>
         <%= render  "partials/comments" %>
